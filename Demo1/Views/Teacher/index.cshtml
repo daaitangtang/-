@@ -1,0 +1,143 @@
+﻿
+@{
+    Layout = "~/Views/Shared/Stu_Layout.cshtml";
+}
+<html style="height:100%">
+
+<head style="height:100%">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+
+    <title>Bootstrap Admin Template </title>
+    <link rel="shortcut icon" href="/../Resource/img/favicon.ico">
+
+    <!-- global stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+    <link rel="stylesheet" href="/../Resource/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/../Resource/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/../Resource/css/font-icon-style.css">
+    <link rel="stylesheet" href="/../Resource/css/style.default.css" id="theme-stylesheet">
+
+    <!-- Core stylesheets -->
+    <link rel="stylesheet" href="/../Resource/css/ui-elements/card.css">
+    <link rel="stylesheet" href="/../Resource/css/style.css">
+
+    <script src="~/Scripts/ueditor/ueditor.config.js"></script>
+    <script src="~/Scripts/ueditor/ueditor.all.min.js"></script>
+    <link href="~/Scripts/ueditor/themes/iframe.css" rel="stylesheet" />
+    <script src="~/Scripts/ueditor/lang/zh-cn/zh-cn.js"></script>
+</head>
+<body style="height:100%">
+
+
+    <!--====================================================
+                            PAGE CONTENT
+    ======================================================-->
+    <div class="page-content d-flex align-items-stretch" style="height:100%">
+
+        <!--***** SIDE NAVBAR *****-->
+        <nav class="side-navbar">
+            <div class="sidebar-header d-flex align-items-center">
+                <div class="avatar"><img src="@TempData["imagePath"]" alt="..." class="img-fluid rounded-circle"></div>
+                <div class="title">
+                    <h1 class="h4">Steena Ben</h1>
+                </div>
+            </div>
+            <hr>
+            <!-- Sidebar Navidation Menus-->
+            <ul class="list-unstyled">
+
+                <li class="active"> <a href="/Teacher"><i class="icon-home"></i>Home</a></li>
+                <li>
+                    <a href="#users" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-globe"></i>用户管理</a>
+                    <ul id="users" class="collapse list-unstyled">
+                        <li><a href="javascript:void(0);" onclick="loadXMLDoc('/Users/Index')">查看用户</a></li>
+                        <li><a href="javascript:void(0);" onclick="loadXMLDoc('/Users/Create')">添加用户</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#apps" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>试卷管理</a>
+                    <ul id="apps" class="collapse list-unstyled">
+                        <li><a href="javascript:void(0);" onclick="loadXMLDoc('/Teacher/ToAddTeather')">添加教师</a></li>
+                        <li><a href="/Main/ToAppsCalendar">Calendar</a></li>
+                        <li><a href="email.html">Email</a></li>
+                        <a href="~/Views/Main/empty.html">~/Views/Main/empty.html</a>
+                        <li><a href="media.html">Media</a></li>
+                        <li><a href="invoice.html">Invoice</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#forms" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-building-o"></i>课程管理</a>
+                    <ul id="forms" class="collapse list-unstyled">
+                        <li><a onclick="loadXMLDoc('/Blog/IndexTeacher')" ;">课程列表</a></li>
+                        <li><a href="/Blog/Create" ;">新增课程</a></li>
+                    </ul>
+                </li>
+        </nav>
+
+        <div class="content-inner" id="mainbody">
+
+            <textarea id="editor" name="editor"></textarea>
+        </div>
+    </div>
+</body>
+</html>
+<script src="/../Resource/js/jquery.min.js"></script>
+<script src="/../Resource/js/popper/popper.min.js"></script>
+<script src="/../Resource/js/tether.min.js"></script>
+<script src="/../Resource/js/bootstrap.min.js"></script>
+<script src="/../Resource/js/jquery.cookie.js"></script>
+<script src="/../Resource/js/jquery.validate.min.js"></script>
+<script src="/../Resource/js/chart.min.js"></script>
+<script src="/../Resource/js/front.js"></script>
+
+<!--Core Javascript -->
+<script src="/../Resource/js/mychart.js"></script>
+<script type="text/javascript">
+
+    var editor = new baidu.editor.ui.Editor({
+        UEDITOR_HOME_URL: '/Scripts/ueditor/',//配置编辑器路径
+        iframeCssUrl: '/Scripts/ueditor/themes/iframe.css',//样式路径
+        initialContent: '',//初始化编辑器内容
+        autoHeightEnabled: true,//高度自动增长
+        minFrameHeight: 500,//最小高度
+        autoFloatEnabled: true,
+        initialFrameWidth: 690,
+
+        initialFrameHeight: 483
+    });
+    editor.render('editor');
+    $(function () {
+        var message = '@TempData["message"]';
+        if (message.length != 0)
+            alert(message);
+        var jumpLink = '@TempData["jumpLink"]';
+        if (jumpLink.length != 0) {
+            loadXMLDoc(jumpLink);
+        }
+    });
+    function loadXMLDoc(url) {
+        var xmlhttp;
+        if (window.XMLHttpRequest) {
+            //  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+            xmlhttp = new XMLHttpRequest();
+        }
+        else {
+            // IE6, IE5 浏览器执行代码
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                document.getElementById("mainbody").innerHTML = xmlhttp.responseText;
+            }
+        }
+        xmlhttp.open("GET", url, true);
+        xmlhttp.send();
+    }
+
+</script>
+

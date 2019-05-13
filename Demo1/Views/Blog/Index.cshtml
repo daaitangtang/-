@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Demo1.Models.Blog>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.writer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.createTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.modifyTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClickVol)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.writer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.createTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.modifyTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClickVol)
+        </td>
+        <td>
+            <a href="/Blog/Details/@item.id"  target="_Blank">点我阅读</a> 
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,134 @@
+﻿
+@{
+    Layout = "~/Views/Shared/Stu_Layout.cshtml";  
+}
+<style>
+    span {
+        color: red;
+    }
+</style>
+<html style="height:100%">
+
+<head style="height:100%">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+
+    <title>Bootstrap Admin Template </title>
+    <link rel="shortcut icon" href="/../Resource/img/favicon.ico">
+
+    <!-- global stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+    <link rel="stylesheet" href="/../Resource/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/../Resource/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/../Resource/css/font-icon-style.css">
+    <link rel="stylesheet" href="/../Resource/css/style.default.css" id="theme-stylesheet">
+
+    <!-- Core stylesheets -->
+    <link rel="stylesheet" href="/../Resource/css/ui-elements/card.css">
+    <link rel="stylesheet" href="/../Resource/css/style.css">
+</head>
+<body style="height:100%">
+
+
+    <!--====================================================
+                            PAGE CONTENT
+    ======================================================-->
+    <div class="page-content d-flex align-items-stretch" style="height:100%">
+        <!--***** SIDE NAVBAR *****-->
+        <nav class="side-navbar">
+            <div class="sidebar-header d-flex align-items-center">
+                <div class="avatar"><img src="@TempData["imagePath"]" alt="..." class="img-fluid rounded-circle"></div>
+                <div class="title">
+                    <h1 class="h4">@Session["username"]</h1>
+                </div>
+            </div>
+            <hr>
+            <!-- Menus-->
+            <ul class="list-unstyled">
+                <li class="active"> <a href="/Stu"><i class="icon-home"></i>Home</a></li>
+                <li>
+                    <a href="#acoount" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>账号管理</a>
+                    <ul id="acoount" class="collapse list-unstyled">
+                        <li><a href="javascript:void(0);" onclick="loadXMLDoc('/Stu/ToChangePwd')">修改密码</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#study" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>课程学习</a>
+                    <ul id="study" class="collapse list-unstyled">
+                        <li><a href="javascript:void(0);" onclick="loadXMLDoc('/Blog/Index')">课程列表</a></li>
+                    </ul>
+                </li>
+            </ul><span class="heading">Extras</span>
+            <ul class="list-unstyled">
+                <li> <a href="#"> <i class="icon-picture"></i>Demo </a></li>
+            </ul>
+        </nav>
+
+        <div class="content-inner" id="mainbody">
+            <h1>欢迎欢迎！</h1>
+
+        </div>
+    </div>
+</body>
+</html>
+<script src="/../Resource/js/jquery.min.js"></script>
+<script src="/../Resource/js/popper/popper.min.js"></script>
+<script src="/../Resource/js/tether.min.js"></script>
+<script src="/../Resource/js/bootstrap.min.js"></script>
+<script src="/../Resource/js/jquery.cookie.js"></script>
+<script src="/../Resource/js/jquery.validate.min.js"></script>
+<script src="/../Resource/js/chart.min.js"></script>
+<script src="/../Resource/js/front.js"></script>
+
+<!--Core Javascript -->
+<script src="/../Resource/js/mychart.js"></script>
+<script>
+    $(function () {
+        var message = '@TempData["message"]';
+        if (message.length != 0)
+            alert(message);
+        var jumpLink = '@TempData["jumpLink"]';
+        if (jumpLink.length != 0) {
+            loadXMLDoc(jumpLink);
+        }
+    });
+    function loadXMLDoc(url) {
+        var xmlhttp;
+        if (window.XMLHttpRequest) {
+            //  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+            xmlhttp = new XMLHttpRequest();
+        }
+        else {
+            // IE6, IE5 浏览器执行代码
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                document.getElementById("mainbody").innerHTML = xmlhttp.responseText;
+            }
+        }
+        xmlhttp.open("GET", url, true);
+        xmlhttp.send();
+    }
+    function ChangePwdCheck() {
+        $("#passworderr1").empty();
+        $("#passworderr2").empty();
+        var oldPassword = $("#oldPassword").val()
+        var newPassword = $("#newPassword").val()
+        var newPasswordCheck = $("#newPasswordCheck").val()
+        if (oldPassword.length == 0) {
+            $("#passworderr1").append("用户名不能为空");
+            return false;
+        }
+        if (newPassword != newPasswordCheck) {
+            $("#passworderr2").append("两次输入密码不一致");
+            return false;
+        }
+        return true;
+    }
+</script>
+

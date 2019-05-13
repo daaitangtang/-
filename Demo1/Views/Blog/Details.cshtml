@@ -1,0 +1,58 @@
+﻿@model Demo1.Models.Blog
+
+@{
+    ViewBag.Title = "Details";
+}
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+
+    <title>Bootstrap Admin Template </title>
+    <link rel="shortcut icon" href="/../Resource/img/favicon.ico">
+
+    <!-- global stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+    <link rel="stylesheet" href="/../Resource/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/../Resource/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/../Resource/css/font-icon-style.css">
+    <link rel="stylesheet" href="/../Resource/css/style.default.css" id="theme-stylesheet">
+
+    <!-- Core stylesheets -->
+    <link rel="stylesheet" href="/../Resource/css/ui-elements/card.css">
+    <link rel="stylesheet" href="/../Resource/css/style.css">
+
+    <script src="~/Scripts/ueditor/ueditor.config.js"></script>
+    <script src="~/Scripts/ueditor/ueditor.all.min.js"></script>
+    <link href="~/Scripts/ueditor/themes/iframe.css" rel="stylesheet" />
+    <script src="~/Scripts/ueditor/lang/zh-cn/zh-cn.js"></script>
+</head>
+<div class="article-info-box">
+    <h1 align="center">@Model.title</h1>
+    <h5 align="center">@Model.createTime  @Model.writer 阅读数:@Model.ClickVol</h5>
+</div>
+<div id="detail" style="margin-left:300px; margin-right:300px">
+</div>
+
+
+<script type="text/javascript">
+    function htmlRestore(str) {
+        var s = "";
+        if (str.length === 0) {
+            return "";
+        }
+        s = str.replace(/&amp;/g, "&");
+        s = s.replace(/&lt;/g, "<");
+        s = s.replace(/&gt;/g, ">");
+        s = s.replace(/&nbsp;/g, " ");
+        s = s.replace(/&#39;/g, "\'");
+        s = s.replace(/&quot;/g, "\"");
+        return s;
+    }
+    var result = '@Model.detail';
+    var tt = htmlRestore(result);
+    document.getElementById("detail").innerHTML = tt ;
+</script>

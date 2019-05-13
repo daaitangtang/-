@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html>
+<style>
+    span {
+        color: red;
+    }
+
+    .hfont {
+        color: #F00;
+        font-weight: bold;
+    }
+    .inputfile
+    {
+        opacity: 0;
+    }
+</style>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Login Form Template</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+    <link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../assets/css/form-elements.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+
+
+    <!-- Favicon and touch icons -->
+    <link rel="shortcut icon" href="../../assets/ico/favicon.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../../assets/ico/apple-touch-icon-57-precomposed.png">
+</head>
+
+
+
+<body>
+    <!-- Top content -->
+    <div class="top-content">
+        <div class="inner-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2 text">
+                        <h1><strong>数据结构与算法辅助教学平台</strong></h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3 form-box">
+                        <div class="form-top">
+                            <div class="form-top-left">
+                                <h3>Register an account</h3>
+                                <p>Enter your basic information:</p>
+                            </div>
+                            <div class="form-top-right">
+                                <i class="fa fa-lock"></i>
+                            </div>
+                        </div>
+                        <div class="form-bottom">
+                            <form role="form" action="/Home/Register" method="post" class="login-form" style="margin-left:30px; margin-right:30px;" onsubmit="return loginCheck()">
+                                <div class="form-group">
+                                    <label for="">用户名</label>
+                                    <input class="form-control" name="username" id="username" type="text" placeholder="">
+                                </div>
+                                <span id="usernameMessage"></span>
+                                <div class="form-group">
+                                    <label for="">密码</label>
+                                    <input class="form-control" name="password" id="password" type="password" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">确认密码</label>
+                                    <input class="form-control" name="passwordConfirm" id="passwordConfirm" type="password" placeholder="" onblur="checkPass();">
+                                </div>
+                                <span id="passworderr"> </span>
+                                <div class="form-group">
+                                    <label for="">邮箱</label>
+                                    <input class="form-control" name="email" id="email" type="text" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">电话</label>
+                                    <input class="form-control" name="phone" id="phone" type="text" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">学校</label>
+                                    <input class="form-control" name="school" id="school" type="text" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">选择头像</label>
+                                    <input type="file" name="imagePath" id="imagePath">
+                                </div>
+
+                                <button type="submit" class="btn">Confirm register!</button>
+                                <a href="/Home/Index">已有账号？点我登录</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Javascript -->
+    <script src="../../assets/js/jquery-1.11.1.min.js"></script>
+    <script src="../../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../assets/js/jquery.backstretch.min.js"></script>
+    <script src="../../assets/js/scripts.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            var message = '@TempData["message"]';
+            if (message.length != 0)
+                alert(message);
+        });
+        $("input[type='file']").change(function () {
+             var file = this.files[0];
+            if (window.FileReader) {
+                var reader = new FileReader();
+                reader.readAsDataURL(file);
+                //监听文件读取结束后事件    
+                reader.onloadend = function (e) {
+                    $(".img").attr("src", e.target.result);    //e.target.result就是最后的路径地址
+                };
+            }
+        });
+
+        function loginCheck() {
+            var username = $("#username").val()
+            var password = $("#password").val()
+            var passwordConfirm = $("#passwordConfirm").val()
+            if (username.length == 0) {
+                $("#usernameMessage").append("用户名不能为空");
+                return false;
+            }
+            if (password != passwordConfirm) {
+                $("#usernameMessage").append("两次输入密码不一致");
+                return false;
+            }
+            $("#usernameMessage").empty();
+            return true;
+        }
+
+        function checkPass() {
+            $("#passworderr").empty();
+            var pwd1 = $("#password").val()
+            var pwd2 = $("#passwordConfirm").val()
+            if (pwd1 != pwd2) {
+                $("#passworderr").append("两次输入密码不一致");
+                return false;
+            }
+        }
+    </script>
+
+</body>
+
+</html>
