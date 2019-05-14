@@ -51,7 +51,7 @@
             <!-- Sidebar Navidation Menus-->
             <ul class="list-unstyled">
 
-                <li class="active"> <a href="/Teacher"><i class="icon-home"></i>Home</a></li>
+                <li class="active"> <a href="/Admin"><i class="icon-home"></i>Home</a></li>
                 <li>
                     <a href="#users" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-globe"></i>用户管理</a>
                     <ul id="users" class="collapse list-unstyled">
@@ -59,24 +59,7 @@
                         <li><a href="javascript:void(0);" onclick="loadXMLDoc('/Users/Create')">添加用户</a></li>
                     </ul>
                 </li>
-                <li>
-                    <a href="#apps" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>试卷管理</a>
-                    <ul id="apps" class="collapse list-unstyled">
-                        <li><a href="javascript:void(0);" onclick="loadXMLDoc('/Teacher/ToAddTeather')">添加教师</a></li>
-                        <li><a href="/Main/ToAppsCalendar">Calendar</a></li>
-                        <li><a href="email.html">Email</a></li>
-                        <a href="~/Views/Main/empty.html">~/Views/Main/empty.html</a>
-                        <li><a href="media.html">Media</a></li>
-                        <li><a href="invoice.html">Invoice</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#forms" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-building-o"></i>课程管理</a>
-                    <ul id="forms" class="collapse list-unstyled">
-                        <li><a onclick="loadXMLDoc('/Blog/IndexTeacher')" ;">课程列表</a></li>
-                        <li><a href="/Blog/Create" ;">新增课程</a></li>
-                    </ul>
-                </li>
+            </ul>
         </nav>
 
         <div class="content-inner" id="mainbody">
@@ -138,7 +121,15 @@
         xmlhttp.open("GET", url, true);
         xmlhttp.send();
     }
-
+    function mcon() {
+        var boo = confirm("确认删除吗？");
+        if (boo) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
 </script>
 

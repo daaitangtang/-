@@ -101,7 +101,9 @@ namespace Demo1.Controllers
             {
                 return HttpNotFound();
             }
-            return View(user);
+            db.User.Remove(user);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         // POST: Users/Delete/5

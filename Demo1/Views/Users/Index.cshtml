@@ -54,11 +54,18 @@
             @Html.DisplayFor(modelItem => item.registime)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            <a href="javascript:void(0);" onclick="mcon()?loadXMLDoc('/Users/Delete/@item.id'):''">删除用户</a>
         </td>
     </tr>
 }
 
 </table>
+
+<script type="text/javascript">
+    $(function () {
+        var message = '@TempData["message"]';
+        if (message.length != 0)
+            alert(message);
+    });
+</script>
+  
