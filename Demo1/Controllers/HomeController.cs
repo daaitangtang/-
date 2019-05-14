@@ -67,7 +67,9 @@ namespace Demo1.Controllers
                 {
                     db.SaveChanges();
                 }
+#pragma warning disable CS0168 // 声明了变量“e”，但从未使用过
                 catch(Exception e)
+#pragma warning restore CS0168 // 声明了变量“e”，但从未使用过
                 {
 
                 }

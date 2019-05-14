@@ -54,6 +54,7 @@
             @Html.DisplayFor(modelItem => item.registime)
         </td>
         <td>
+            <a href="javascript:void(0);" onclick="loadXMLDoc('/Users/Edit/@item.id')">修改用户信息</a> |
             <a href="javascript:void(0);" onclick="mcon()?loadXMLDoc('/Users/Delete/@item.id'):''">删除用户</a>
         </td>
     </tr>

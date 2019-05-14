@@ -1,4 +1,4 @@
-/*
+﻿/*
 * ==========================================================
 *     GENERAL STYLES
 * ==========================================================
@@ -117,9 +117,10 @@ table {
 }
 
 .content-inner {
-    padding:25px;
+    padding: 25px;
     width: calc(100% - 250px);
     background: #EEF5F9;
+    overflow: auto;
 }
 
 .content-inner.active {
