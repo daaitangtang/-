@@ -41,7 +41,7 @@
 
         <!--***** SIDE NAVBAR *****-->
         <nav class="side-navbar">
-            <div class="sidebar-header d-flex align-items-center">s
+            <div class="sidebar-header d-flex align-items-center">
                 <div class="avatar"><img src="@TempData["imagePath"]" alt="..." class="img-fluid rounded-circle"></div>
                 <div class="title">
                     <h1 class="h4">Steena Ben</h1>
@@ -55,12 +55,8 @@
                 <li>
                     <a href="#apps" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>试卷管理</a>
                     <ul id="apps" class="collapse list-unstyled">
-                        <li><a href="javascript:void(0);" onclick="loadXMLDoc('/Teacher/ToAddTeather')">添加教师</a></li>
-                        <li><a href="/Main/ToAppsCalendar">Calendar</a></li>
-                        <li><a href="email.html">Email</a></li>
-                        <a href="~/Views/Main/empty.html">~/Views/Main/empty.html</a>
-                        <li><a href="media.html">Media</a></li>
-                        <li><a href="invoice.html">Invoice</a></li>
+                        <li><a href="javascript:void(0);" onclick="loadXMLDoc('/TestInfoes/Index')">查看试卷</a></li>
+                        <li><a href="javascript:void(0);" onclick="loadXMLDoc('/TestInfoes/Create')">添加试卷</a></li>
                     </ul>
                 </li>
                 <li>
@@ -87,6 +83,8 @@
 <script src="/../Resource/js/jquery.cookie.js"></script>
 <script src="/../Resource/js/jquery.validate.min.js"></script>
 <script src="/../Resource/js/chart.min.js"></script>
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="http://www.86y.org/demo/selecttime/selectime.js"></script>
 <script src="/../Resource/js/front.js"></script>
 
 <!--Core Javascript -->
@@ -113,6 +111,7 @@
         if (jumpLink.length != 0) {
             loadXMLDoc(jumpLink);
         }
+
     });
     function loadXMLDoc(url) {
         var xmlhttp;

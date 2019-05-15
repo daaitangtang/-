@@ -52,10 +52,13 @@ namespace Demo1.Controllers
             {
                 db.TestInfo.Add(testInfo);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                TempData["changeMessage"] = "新建试题成功";
+                TempData["jump"] = "/TestInfoes/Index";
+                return RedirectToAction("Index", "Teacher");
             }
-
-            return View(testInfo);
+            TempData["changeMessage"] = "新建试题失败";
+            TempData["jump"] = "/TestInfoes/Create";
+            return RedirectToAction("Index", "Teacher");
         }
 
         // GET: TestInfoes/Edit/5

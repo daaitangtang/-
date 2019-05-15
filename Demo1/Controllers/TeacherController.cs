@@ -18,6 +18,15 @@ namespace Demo1.Controllers
             var content = fc["editor"];
             TempData.Keep("email");
             TempData.Keep("imagePath");
+
+            if (TempData["changeMessage"] != null)
+            {
+                TempData["message"] = TempData["changeMessage"];
+            }
+            if (TempData["jump"] != null)
+            {
+                TempData["jumpLink"] = TempData["jump"];
+            }
             if (Session["username"] == null)
             {
                 TempData["message"] = "请登录";

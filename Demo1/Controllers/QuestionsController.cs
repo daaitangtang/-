@@ -35,9 +35,14 @@ namespace Demo1.Controllers
             return View(question);
         }
 
-        // GET: Questions/Create
-        public ActionResult Create()
+
+        public ActionResult Create(int? id)
         {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ViewData["test_id"] = id;
             return View();
         }
 

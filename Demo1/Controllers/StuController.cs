@@ -24,12 +24,7 @@ namespace Demo1.Controllers
             return View("index");
         }
 
-        public ActionResult SignOut()
-        {
-            Session["username"] = null;
-            TempData["email"] = null;
-            return RedirectToAction("Index", "Home");
-        }
+
 
         public ActionResult ToChangePwd()
         {
@@ -51,6 +46,11 @@ namespace Demo1.Controllers
             db.SaveChanges();
             TempData["message"] = "修改成功";
             return RedirectToAction("Index");
+        }
+
+        public ActionResult TestIndex()
+        {
+            return View(db.TestInfo.ToList());
         }
     }
 }

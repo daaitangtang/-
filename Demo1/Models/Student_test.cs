@@ -16,7 +16,7 @@ namespace Demo1.Models
     {
         public int id { get; set; }
         public Nullable<int> user_id { get; set; }
-        public Nullable<int> test_id { get; set; }
+        public Nullable<int> question_id { get; set; }
         public string answer { get; set; }
     }
 }

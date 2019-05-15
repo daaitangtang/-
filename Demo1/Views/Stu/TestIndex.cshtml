@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Demo1.Models.TestInfo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.test_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.test_time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.test_info)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.test_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.test_time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.test_info)
+            </td>
+            <td>
+                <a href="javascript:void(0);" onclick="loadXMLDoc('/Users/Edit/@item.test_id')">开始作答</a>
+            </td>
+        </tr>
+    }
+
+</table>

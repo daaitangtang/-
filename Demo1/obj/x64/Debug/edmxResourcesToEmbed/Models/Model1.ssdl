@@ -31,7 +31,7 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="user_id" Type="int" />
-    <Property Name="test_id" Type="int" />
+    <Property Name="question_id" Type="int" />
     <Property Name="answer" Type="varchar(max)" />
   </EntityType>
   <EntityType Name="TestInfo">
@@ -40,7 +40,7 @@
     </Key>
     <Property Name="test_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="test_name" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="test_time" Type="datetime" />
+    <Property Name="test_time" Type="time" Precision="7" />
     <Property Name="test_info" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="User">

@@ -23,6 +23,7 @@ namespace Demo1.Controllers
             if (user != null)
             {
                 Session["username"] = username;
+                Session["userid"] = user.id;
                 TempData["email"] = user.email;
                 TempData["imagePath"] = "/../Resource/img/" + user.imagePath;
                 if (user.type == 0)
@@ -76,6 +77,14 @@ namespace Demo1.Controllers
 
             return View();
         }
-       
+
+        public ActionResult SignOut()
+        {
+            Session["username"] = null;
+            Session["userid"] = null;
+            TempData["email"] = null;
+            return RedirectToAction("Index", "Home");
+        }
+
     }
 }
