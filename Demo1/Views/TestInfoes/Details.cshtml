@@ -1,0 +1,42 @@
+﻿@model Demo1.Models.TestInfo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TestInfo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.test_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.test_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.test_time)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.test_time)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.test_info)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.test_info)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.test_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

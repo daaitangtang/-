@@ -12,7 +12,7 @@ namespace Demo1.Controllers
 {
     public class BlogController : Controller
     {
-        private StudyEntities db = new StudyEntities();
+        private StudyEntities3 db = new StudyEntities3();
 
         // GET: Blog
         public ActionResult Index()

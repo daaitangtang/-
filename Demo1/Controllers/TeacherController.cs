@@ -9,7 +9,7 @@ namespace Demo1.Controllers
 {
     public class TeacherController : Controller
     {
-        private StudyEntities db = new StudyEntities();
+        private StudyEntities3 db = new StudyEntities3();
         // GET: Teacher
 
         [ValidateInput(false)]

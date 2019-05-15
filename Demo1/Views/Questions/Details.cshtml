@@ -1,0 +1,74 @@
+﻿@model Demo1.Models.Question
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Question</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.test_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.test_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.question_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.question_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.question_chooseA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.question_chooseA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.question_chooseB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.question_chooseB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.question_chooseC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.question_chooseC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.question_chooseD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.question_chooseD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.question_answer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.question_answer)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.question_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

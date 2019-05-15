@@ -12,7 +12,7 @@ namespace Demo1.Controllers
 {
     public class UsersController : Controller
     {
-        private StudyEntities db = new StudyEntities();
+        private StudyEntities3 db = new StudyEntities3();
 
         // GET: Users
         public ActionResult Index()
