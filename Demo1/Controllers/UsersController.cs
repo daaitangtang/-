@@ -84,9 +84,11 @@ namespace Demo1.Controllers
             {
                 db.Entry(user).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                TempData["changeMessage"] = "修改用户信息成功";
+                TempData["jump"] = "/Users/Index";
+                return RedirectToAction("Index","Admin");
             }
-            return View(user);
+            return View("Index", "Admin");
         }
 
         // GET: Users/Delete/5

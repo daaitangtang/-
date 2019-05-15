@@ -13,11 +13,21 @@ namespace Demo1.Controllers
         {
             TempData.Keep("email");
             TempData.Keep("imagePath");
+
+            if (TempData["changeMessage"] != null)
+            {
+                TempData["message"] = TempData["changeMessage"];
+            }
+            if (TempData["jump"] != null)
+            {
+                TempData["jumpLink"] = TempData["jump"];
+            }
             if (Session["username"] == null)
             {
                 TempData["message"] = "请登录";
                 return RedirectToAction("Index", "Home");
             }
+            
             return View();
         }
 
