@@ -9,85 +9,63 @@
 {
     @Html.AntiForgeryToken()
     
-    <div class="form-horizontal" style="margin-left:50px">
-        <h4>新建用户</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.username, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+<div class="form-horizontal" style="margin-left:50px">
+    <h4>新建用户</h4>
+    <hr />
+    <div class="form-bottom" style="margin-left:30px; margin-right:1000px;">
+        <form role="form" action="/Users/Create" method="post" class="login-form" onsubmit="return submitCheck()">
+            <div class="form-group">
+                <label for="">用户名</label>
+                <input class="form-control" name="username" id="username" type="text" placeholder="">
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+            <span id="usernameMessage" style="display:none"></span>
+            <div class="form-group">
+                <label for="">密码</label>
+                <input class="form-control" name="password" id="password" type="password" placeholder="">
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.type, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.type, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.type, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <label for="">确认密码</label>
+                <input class="form-control" name="passwordConfirm" id="passwordConfirm" type="password" placeholder="" onblur="checkPass();">
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+            <span id="passworderr" style="display:none"> </span>
+            <div class="form-group">
+                <label for="">用户身份</label>
+                <br />
+                <select name="type" id="type">
+                    <option value="0" check="checked">学生</option>
+                    <option value="1">教师</option>
+                    <option value="2">管理员</option>
+                </select>
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.phone, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <label for="">邮箱</label>
+                <input class="form-control" name="email" id="email" type="text" placeholder="">
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.imagePath, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.imagePath, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.imagePath, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <label for="">电话</label>
+                <input class="form-control" name="phone" id="phone" type="text" placeholder="">
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.school, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.school, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.school, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <label for="">学校</label>
+                <input class="form-control" name="school" id="school" type="text" placeholder="">
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.registime, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.registime, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.registime, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <label for="">选择头像</label>
+                <input type="file" name="imagePath" id="imagePath">
             </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
+            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>
+        </form>
+        <div>
+            <a href="javascript:void(0);" onclick="loadXMLDoc('/Users/Index')">Back to List!</a>
         </div>
     </div>
-}
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
+}
+    
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

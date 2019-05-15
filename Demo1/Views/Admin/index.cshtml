@@ -2,6 +2,11 @@
 @{
     Layout = "~/Views/Shared/Layout.cshtml";
 }
+<style>
+    span {
+        color: red;
+    }
+</style>
 <html style="height:100%">
 
 <head style="height:100%">
@@ -129,6 +134,30 @@
         else {
             return false;
         }
+    }
+
+    function submitCheck() {
+        var username = $("#username").val()
+        if (username.length == 0) {
+            $("#usernameMessage").append("用户名不能为空");
+            document.getElementById("usernameMessage").style.display = "";
+            return false;
+        }
+        $("#usernameMessage").empty();
+        document.getElementById("usernameMessage").style.display = "none";
+        return true;
+    }
+
+    function checkPass() {
+        $("#passworderr").empty();
+        var pwd1 = $("#password").val()
+        var pwd2 = $("#passwordConfirm").val()
+        if (pwd1 != pwd2) {
+            $("#passworderr").append("两次输入密码不一致");
+            document.getElementById("passworderr").style.display = "";
+            return false;
+        }
+        document.getElementById("passworderr").style.display = "none";
     }
 
 </script>

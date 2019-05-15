@@ -50,12 +50,31 @@ namespace Demo1.Controllers
         {
             if (ModelState.IsValid)
             {
+                if(user.username == null)
+                {
+                    TempData["changeMessage"] = "新建用户失败";
+                    TempData["jump"] = "/Users/Create";
+                    return RedirectToAction("Index", "Admin");
+                }
+                var res = db.User.ToList();
+                var result = db.User.Where(o => o.username == user.username).FirstOrDefault();
+                if (result != null) 
+                {
+                    TempData["changeMessage"] = "用户已存在";
+                    TempData["jump"] = "/Users/Create";
+                    return RedirectToAction("Index", "Admin");
+                }
+                user.registime = DateTime.Now;
                 db.User.Add(user);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                TempData["changeMessage"] = "新建用户成功";
+                TempData["jump"] = "/Users/Index";
+                return RedirectToAction("Index", "Admin");
             }
 
-            return View(user);
+            TempData["changeMessage"] = "新建用户失败";
+            TempData["jump"] = "/Users/Create";
+            return RedirectToAction("Index", "Admin");
         }
 
         // GET: Users/Edit/5
@@ -88,6 +107,7 @@ namespace Demo1.Controllers
                 TempData["jump"] = "/Users/Index";
                 return RedirectToAction("Index","Admin");
             }
+            TempData["changeMessage"] = "修改用户信息失败";
             return View("Index", "Admin");
         }
 
