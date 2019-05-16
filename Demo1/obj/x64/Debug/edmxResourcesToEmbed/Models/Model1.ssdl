@@ -25,6 +25,20 @@
     <Property Name="question_chooseD" Type="nvarchar(max)" />
     <Property Name="question_answer" Type="nvarchar(max)" />
   </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“Study.dbo.Student_grade”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="Student_grade">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="userid" />
+      <PropertyRef Name="test_id" />
+      <PropertyRef Name="grade" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userid" Type="int" Nullable="false" />
+    <Property Name="test_id" Type="int" Nullable="false" />
+    <Property Name="grade" Type="float" Nullable="false" />
+  </EntityType>
   <EntityType Name="Student_test">
     <Key>
       <PropertyRef Name="id" />
@@ -63,5 +77,13 @@
     <EntitySet Name="Student_test" EntityType="Self.Student_test" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TestInfo" EntityType="Self.TestInfo" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Student_grade" EntityType="Self.Student_grade" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Student_grade].[id] AS [id], 
+    [Student_grade].[userid] AS [userid], 
+    [Student_grade].[test_id] AS [test_id], 
+    [Student_grade].[grade] AS [grade]
+    FROM [dbo].[Student_grade] AS [Student_grade]</DefiningQuery>
+    </EntitySet>
   </EntityContainer>
 </Schema>

@@ -30,5 +30,6 @@ namespace Demo1.Models
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<Student_test> Student_test { get; set; }
         public virtual DbSet<TestInfo> TestInfo { get; set; }
+        public virtual DbSet<Student_grade> Student_grade { get; set; }
     }
 }

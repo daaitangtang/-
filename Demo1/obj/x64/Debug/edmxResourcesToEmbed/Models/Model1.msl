@@ -63,5 +63,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Student_grade">
+      <EntityTypeMapping TypeName="StudyModel.Student_grade">
+        <MappingFragment StoreEntitySet="Student_grade">
+          <ScalarProperty Name="grade" ColumnName="grade" />
+          <ScalarProperty Name="test_id" ColumnName="test_id" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
