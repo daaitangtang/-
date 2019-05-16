@@ -59,6 +59,7 @@ namespace Demo1.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             var needQuestion = db.Question.Where(o => o.test_id == id).ToList();
+            ViewData["QuestionCount"] = needQuestion.Count();
             TestInfo testInfo = db.TestInfo.Find(id);
             OnlineTestModel onlineTestModel = new OnlineTestModel
             {

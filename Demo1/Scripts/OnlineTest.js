@@ -92,9 +92,6 @@ function show_time(Stop) {
                     }
                 }
             }
-            //for (var i = 0; i < AnswerArray.length; i++) {
-            //    console.log(AnswerArray[i]);
-            //}
             //答案收集完成
             var itemScore = 100 / AnswerArray.length;//计算单题分数
             var sumScore = 0;//总分
@@ -200,9 +197,6 @@ $(function () {
                 }
             }
         }
-        //for (var i = 0; i < AnswerArray.length; i++) {
-        //    console.log(AnswerArray[i]);
-        //}
         //答案收集完成
         var itemScore = 100 / AnswerArray.length;//计算单题分数
         var sumScore = 0;//总分

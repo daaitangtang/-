@@ -19,6 +19,7 @@
     <input type="hidden" id="startTime" value="@DateTime.Now" />
     <input type="hidden" id="endTime" value="@DateTime.Now.AddMinutes(Model.TestInfo.test_time)">
     <input type="hidden" id="test_id" value="@Model.TestInfo.test_id" />
+    <input type="hidden" id="topicCount" value="@ViewData["QuestionCount"]"/>
         }
 
     <div class="fixed-bottom" id="tijiaoshijuan">
