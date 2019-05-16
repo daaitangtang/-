@@ -111,3 +111,4 @@ D:\project\Demo1\Demo1\obj\x64\Debug\Demo1.csproj.CoreCompileInputs.cache
 D:\project\Demo1\Demo1\obj\x64\Debug\Demo1.csproj.CopyComplete
 D:\project\Demo1\Demo1\obj\x64\Debug\Demo1.dll
 D:\project\Demo1\Demo1\obj\x64\Debug\Demo1.pdb
+D:\project\Demo1\Demo1\obj\x64\Debug\Demo1.csprojAssemblyReference.cache

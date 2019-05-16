@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -23,8 +24,6 @@ namespace Demo1.Controllers
             }
             return View("index");
         }
-
-
 
         public ActionResult ToChangePwd()
         {
@@ -51,6 +50,21 @@ namespace Demo1.Controllers
         public ActionResult TestIndex()
         {
             return View(db.TestInfo.ToList());
+        }
+
+        public ActionResult OnlineTest(int? id)
+        {
+            if (id == null) 
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var needQuestion = db.Question.Where(o => o.test_id == id).ToList();
+            TestInfo testInfo = db.TestInfo.Find(id);
+            ViewData["test_name"] = testInfo.test_name;
+            ViewData["test_time"] = testInfo.test_time;
+            ViewData["test_info"] = testInfo.test_info;
+            ViewData["test_id"] = testInfo.test_id;
+            return View(needQuestion);
         }
     }
 }

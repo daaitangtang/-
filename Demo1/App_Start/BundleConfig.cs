@@ -22,9 +22,25 @@ namespace Demo1
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/pop").Include(
+                        "~/Scripts/umd/popper.js"
+                        ));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+
+            bundles.Add(new ScriptBundle("~/bundles/zjxd").Include(
+          "~/Scripts/jquery.scrollUp.js",
+           "~/Scripts/OpenScrollup.js"));
+
+            bundles.Add(new StyleBundle("~/Content/aaaa").Include(
+                        "~/Content/bootstrap.min.css",
+                        "~/Content/site.css",
+                        "~/Content/image.css"
+                        // "~/Content/open-iconic-bootstrap.css"
+                        ));
         }
     }
 }
