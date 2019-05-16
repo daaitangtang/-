@@ -49,7 +49,36 @@ namespace Demo1.Controllers
 
         public ActionResult TestIndex()
         {
-            return View(db.TestInfo.ToList());
+            if (Session["userid"] == null)
+            {
+                return RedirectToAction("Index", "Stu");
+            }
+            var testInfos = db.TestInfo.ToList();
+            var studentGrade = db.Student_grade.ToList();
+            List<StuTestInfoModel> stuTestInfoModels = new List<StuTestInfoModel>();
+            //检查该学生是否做过测试
+            foreach(var testInfo in testInfos)
+            {
+                var result = studentGrade.Where(o => o.test_id == testInfo.test_id && o.userid.Equals(Session["userid"])).FirstOrDefault();
+                if(result != null)
+                {
+                    stuTestInfoModels.Add(new StuTestInfoModel
+                    {
+                        testInfo = testInfo,
+                        IsDone = true
+                    });
+                }
+                else
+                {
+                    stuTestInfoModels.Add(new StuTestInfoModel
+                    {
+                        testInfo = testInfo,
+                        IsDone = false
+                    });
+                }
+            }
+
+            return View(stuTestInfoModels);
         }
 
         public ActionResult OnlineTest(int? id)

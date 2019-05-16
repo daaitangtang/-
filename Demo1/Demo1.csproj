@@ -217,6 +217,7 @@
     <Compile Include="Models\Student_test.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\StuTestInfoModel.cs" />
     <Compile Include="Models\TestInfo.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

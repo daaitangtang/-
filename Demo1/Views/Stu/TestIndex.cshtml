@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Demo1.Models.TestInfo>
+﻿
+@model IEnumerable<Demo1.Models.StuTestInfoModel>
 
 @{
     ViewBag.Title = "Index";
@@ -12,33 +13,36 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.test_name)
+            @Html.DisplayNameFor(model => model.testInfo.test_name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.test_time)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.test_info)
+            @Html.DisplayNameFor(model => model.testInfo.test_time)
         </th>
         <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.test_name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.test_time)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.test_info)
-            </td>
-            <td>
-                <a href="/Stu/OnlineTest/@item.test_id"  >开始作答</a>
-            </td>
-        </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.testInfo.test_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.testInfo.test_time)
+        </td>
+        <td>
+            @{
+                if (item.IsDone)
+                {
+                    <a href="/Stu/TestAnswer/@item.testInfo.test_id">查看成绩</a>
+                }
+                else
+                {
+                    <a href="/Stu/OnlineTest/@item.testInfo.test_id">开始作答</a>
+                }
+            }
+        </td>
+    </tr>
     }
 
 </table>
