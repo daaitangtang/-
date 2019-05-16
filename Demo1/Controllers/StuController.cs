@@ -74,18 +74,51 @@ namespace Demo1.Controllers
         {
             var questions = db.Question.Where(o => o.test_id == test_id).ToList();
             var student_answer = Answer.ToList();
-            for(int i = 0;i < student_answer.Count();i++)
+            if (questions.Count() == student_answer.Count())
             {
-                Student_test student_test = new Student_test
+                double itemScore = 100F / questions.Count();
+                double sumScore = 0;
+
+                List<OnlineTestResultModel> result = new List<OnlineTestResultModel>();
+                for (int i = 0; i < student_answer.Count(); i++)
                 {
-                    user_id = userid,
-                    question_id = questions[i].question_id,
-                    answer = student_answer[i]
+                    //将学生考试信息添加到数据库
+                    Student_test student_test = new Student_test
+                    {
+                        user_id = userid,
+                        question_id = questions[i].question_id,
+                        answer = student_answer[i]
+                    };
+                    db.Student_test.Add(student_test);
+
+                    //返回给前端考试信息
+                    OnlineTestResultModel onlineTestResultModel = new OnlineTestResultModel
+                    {
+                        UserAnswer = student_answer[i],
+                        RealAnswer = questions[i].question_answer,
+                        IsTrue = false
+                    };
+
+                    //统计分数
+                    if (questions[i].question_answer.Equals(student_answer[i]))
+                    {
+                        sumScore += itemScore;
+                        onlineTestResultModel.IsTrue = true;
+                    }
+                    result.Add(onlineTestResultModel);
+                }
+                Student_grade student_Grade = new Student_grade
+                {
+                    userid = userid,
+                    test_id = test_id,
+                    grade = sumScore
                 };
-                db.Student_test.Add(student_test);
+                db.Student_grade.Add(student_Grade);
+                db.SaveChanges();
+
+                return Json(result);
             }
-            db.SaveChanges();
-            return null;
+            return Json(false);
         }
     }
 }

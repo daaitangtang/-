@@ -14,4 +14,12 @@ namespace Demo1.Models
 
         public IEnumerable<Question> Questions { get; set; }
     }
+
+    public class OnlineTestResultModel
+    {
+        public string UserAnswer { get; set; }
+        public string RealAnswer { get; set; }
+        public bool IsTrue { get; set; }
+
+    }
 }

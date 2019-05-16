@@ -68,9 +68,6 @@
   <EntityType Name="Student_grade">
     <Key>
       <PropertyRef Name="id" />
-      <PropertyRef Name="userid" />
-      <PropertyRef Name="test_id" />
-      <PropertyRef Name="grade" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="userid" Type="Int32" Nullable="false" />

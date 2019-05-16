@@ -59,7 +59,6 @@ function show_time(Stop) {
         clearTimeout(timerID)
         timer.innerText = "检测中";
         if (isTrue) {
-            //show_time(1);//关闭倒计时
             var AnswerArray = [];
             var TopicCount = $("#topicCount").val() * 1;
             var index = 0;
@@ -99,15 +98,16 @@ function show_time(Stop) {
             show_time(1);//关闭倒计时
             $.ajax({
                 type: "post",
-                url: "../UifiedTest",
+                url: "../OnlineTest",
                 data: {
+                    test_id: $("#test_id").val() * 1,
                     Answer: AnswerArray,
-                    UtId: $("#UtId").val() * 1
+                    userid: $("#userid").val() * 1
                 },
                 datatype: "json",
                 success: function (data) {
                     for (var i = 0; i < data.length; i++) {
-                        //console.log("所选答案" + data[i].UserAnswer + "正确答案" + data[i].RealAnswer + "结果" + data[i].IsTrue);
+                        console.log("所选答案" + data[i].UserAnswer + "正确答案" + data[i].RealAnswer + "结果" + data[i].IsTrue);
                         if (data[i].IsTrue == true) {
                             sumScore += itemScore;
                             $("#ATrue-" + (i + 1) + "").css('display', 'block');
