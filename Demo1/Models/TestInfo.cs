@@ -16,7 +16,7 @@ namespace Demo1.Models
     {
         public int test_id { get; set; }
         public string test_name { get; set; }
-        public Nullable<System.TimeSpan> test_time { get; set; }
+        public int test_time { get; set; }
         public string test_info { get; set; }
     }
 }

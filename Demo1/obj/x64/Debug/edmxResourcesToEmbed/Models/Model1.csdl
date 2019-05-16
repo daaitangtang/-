@@ -43,18 +43,9 @@
     <EntitySet Name="Blog" EntityType="Self.Blog" />
     <EntitySet Name="Question" EntityType="Self.Question" />
     <EntitySet Name="User" EntityType="Self.User" />
-    <EntitySet Name="TestInfo" EntityType="StudyModel.TestInfo" />
     <EntitySet Name="Student_test" EntityType="StudyModel.Student_test" />
+    <EntitySet Name="TestInfo" EntityType="StudyModel.TestInfo" />
   </EntityContainer>
-  <EntityType Name="TestInfo">
-    <Key>
-      <PropertyRef Name="test_id" />
-    </Key>
-    <Property Name="test_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="test_name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="test_time" Type="Time" Precision="7" />
-    <Property Name="test_info" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-  </EntityType>
   <EntityType Name="Student_test">
     <Key>
       <PropertyRef Name="id" />
@@ -63,5 +54,14 @@
     <Property Name="user_id" Type="Int32" />
     <Property Name="question_id" Type="Int32" />
     <Property Name="answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TestInfo">
+    <Key>
+      <PropertyRef Name="test_id" />
+    </Key>
+    <Property Name="test_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="test_name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="test_time" Type="Int32" Nullable="false" />
+    <Property Name="test_info" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
 </Schema>

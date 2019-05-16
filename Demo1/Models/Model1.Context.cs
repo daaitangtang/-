@@ -28,7 +28,7 @@ namespace Demo1.Models
         public virtual DbSet<Blog> Blog { get; set; }
         public virtual DbSet<Question> Question { get; set; }
         public virtual DbSet<User> User { get; set; }
-        public virtual DbSet<TestInfo> TestInfo { get; set; }
         public virtual DbSet<Student_test> Student_test { get; set; }
+        public virtual DbSet<TestInfo> TestInfo { get; set; }
     }
 }

@@ -22,7 +22,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.test_time, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-3">
-            <input type="time" id="test_time" name="test_time" value="01:30" />
+            @Html.EditorFor(model => model.test_time, new { htmlAttributes = new { @class = "form-control" } })
         </div>
     </div>
     <div class="form-group">

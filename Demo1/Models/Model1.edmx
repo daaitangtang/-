@@ -45,7 +45,7 @@
           </Key>
           <Property Name="test_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="test_name" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="test_time" Type="time" Precision="7" />
+          <Property Name="test_time" Type="int" Nullable="false" />
           <Property Name="test_info" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="User">
@@ -116,18 +116,9 @@
           <EntitySet Name="Blog" EntityType="Self.Blog" />
           <EntitySet Name="Question" EntityType="Self.Question" />
           <EntitySet Name="User" EntityType="Self.User" />
-          <EntitySet Name="TestInfo" EntityType="StudyModel.TestInfo" />
           <EntitySet Name="Student_test" EntityType="StudyModel.Student_test" />
+          <EntitySet Name="TestInfo" EntityType="StudyModel.TestInfo" />
         </EntityContainer>
-        <EntityType Name="TestInfo">
-          <Key>
-            <PropertyRef Name="test_id" />
-          </Key>
-          <Property Name="test_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="test_name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="test_time" Type="Time" Precision="7" />
-          <Property Name="test_info" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="Student_test">
           <Key>
             <PropertyRef Name="id" />
@@ -136,6 +127,15 @@
           <Property Name="user_id" Type="Int32" />
           <Property Name="question_id" Type="Int32" />
           <Property Name="answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TestInfo">
+          <Key>
+            <PropertyRef Name="test_id" />
+          </Key>
+          <Property Name="test_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="test_name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="test_time" Type="Int32" Nullable="false" />
+          <Property Name="test_info" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -185,16 +185,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TestInfo">
-            <EntityTypeMapping TypeName="StudyModel.TestInfo">
-              <MappingFragment StoreEntitySet="TestInfo">
-                <ScalarProperty Name="test_info" ColumnName="test_info" />
-                <ScalarProperty Name="test_time" ColumnName="test_time" />
-                <ScalarProperty Name="test_name" ColumnName="test_name" />
-                <ScalarProperty Name="test_id" ColumnName="test_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Student_test">
             <EntityTypeMapping TypeName="StudyModel.Student_test">
               <MappingFragment StoreEntitySet="Student_test">
@@ -202,6 +192,16 @@
                 <ScalarProperty Name="question_id" ColumnName="question_id" />
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TestInfo">
+            <EntityTypeMapping TypeName="StudyModel.TestInfo">
+              <MappingFragment StoreEntitySet="TestInfo">
+                <ScalarProperty Name="test_info" ColumnName="test_info" />
+                <ScalarProperty Name="test_time" ColumnName="test_time" />
+                <ScalarProperty Name="test_name" ColumnName="test_name" />
+                <ScalarProperty Name="test_id" ColumnName="test_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

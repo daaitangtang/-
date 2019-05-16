@@ -60,11 +60,12 @@ namespace Demo1.Controllers
             }
             var needQuestion = db.Question.Where(o => o.test_id == id).ToList();
             TestInfo testInfo = db.TestInfo.Find(id);
-            ViewData["test_name"] = testInfo.test_name;
-            ViewData["test_time"] = testInfo.test_time;
-            ViewData["test_info"] = testInfo.test_info;
-            ViewData["test_id"] = testInfo.test_id;
-            return View(needQuestion);
+            OnlineTestModel onlineTestModel = new OnlineTestModel
+            {
+                TestInfo = testInfo,
+                Questions = needQuestion
+            };
+            return View(onlineTestModel);
         }
     }
 }
