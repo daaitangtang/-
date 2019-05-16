@@ -204,10 +204,11 @@ $(function () {
         show_time(1);//关闭倒计时
         $.ajax({
             type: "post",
-            url: "../UifiedTest",
+            url: "../OnlineTest",
             data: {
+                test_id: $("#test_id").val() * 1,
                 Answer: AnswerArray,
-                UtId: $("#UtId").val() * 1
+                userid: $("#userid").val() * 1
             },
             datatype: "json",
             success: function (data) {

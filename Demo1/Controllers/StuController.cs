@@ -68,5 +68,24 @@ namespace Demo1.Controllers
             };
             return View(onlineTestModel);
         }
+
+        [HttpPost]
+        public JsonResult OnlineTest(int test_id, string[] Answer, int userid)
+        {
+            var questions = db.Question.Where(o => o.test_id == test_id).ToList();
+            var student_answer = Answer.ToList();
+            for(int i = 0;i < student_answer.Count();i++)
+            {
+                Student_test student_test = new Student_test
+                {
+                    user_id = userid,
+                    question_id = questions[i].question_id,
+                    answer = student_answer[i]
+                };
+                db.Student_test.Add(student_test);
+            }
+            db.SaveChanges();
+            return null;
+        }
     }
 }
