@@ -44,9 +44,8 @@
                     @Html.DisplayFor(modelItem => item.ClickVol)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-                    @Html.ActionLink("点我阅读", "Details", new { id = item.id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                    @Html.ActionLink("修改课程信息", "Edit", new { id = item.id }) |
+                    @Html.ActionLink("点我阅读", "Details", new { id = item.id }) 
                 </td>
             </tr>
         }

@@ -50,7 +50,7 @@
                 <div class="sidebar-header d-flex align-items-center">
                     <div class="avatar"><img src="@TempData["imagePath"]" alt="..." class="img-fluid rounded-circle"></div>
                     <div class="title">
-                        <h1 class="h4">Steena Ben</h1>
+                        <h1 class="h4">@Session["username"]</h1>
                     </div>
                 </div>
                 <hr>
@@ -59,21 +59,10 @@
 
                     <li class="active"> <a href="/Teacher"><i class="icon-home"></i>Home</a></li>
                     <li>
-                        <a href="#users" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-globe"></i>用户管理</a>
-                        <ul id="users" class="collapse list-unstyled">
-                            <li><a href="javascript:void(0);" onclick="loadXMLDoc('/Users/Index')">查看用户</a></li>
-                            <li><a href="javascript:void(0);" onclick="loadXMLDoc('/Users/Create')">添加用户</a></li>
-                        </ul>
-                    </li>
-                    <li>
                         <a href="#apps" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>试卷管理</a>
                         <ul id="apps" class="collapse list-unstyled">
-                            <li><a href="javascript:void(0);" onclick="loadXMLDoc('/Teacher/ToAddTeather')">添加教师</a></li>
-                            <li><a href="/Main/ToAppsCalendar">Calendar</a></li>
-                            <li><a href="email.html">Email</a></li>
-                            <a href="~/Views/Main/empty.html">~/Views/Main/empty.html</a>
-                            <li><a href="media.html">Media</a></li>
-                            <li><a href="invoice.html">Invoice</a></li>
+                            <li><a href="javascript:void(0);" onclick="loadXMLDoc('/TestInfoes/Index')">查看试卷</a></li>
+                            <li><a href="javascript:void(0);" onclick="loadXMLDoc('/TestInfoes/Create')">添加试卷</a></li>
                         </ul>
                     </li>
                     <li>
@@ -83,6 +72,13 @@
                             <li><a href="/Blog/Create" ;">新增课程</a></li>
                         </ul>
                     </li>
+                    <li>
+                        <a href="#grade" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>成绩管理</a>
+                        <ul id="grade" class="collapse list-unstyled">
+                            <li><a onclick="loadXMLDoc('/Teacher/StudentGrade')" ;">学生成绩</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </nav>
 
             <div class="content-inner" id="mainbody">

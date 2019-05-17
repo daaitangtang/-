@@ -58,6 +58,8 @@ namespace Demo1.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,title,createTime,modifyTime,detail,writer,ClickVol")] Blog blog)
         {
+            TempData.Keep("email");
+            TempData.Keep("imagePath");
             if (ModelState.IsValid)
             {
                 blog.createTime = DateTime.Now;
@@ -66,20 +68,23 @@ namespace Demo1.Controllers
                 db.Blog.Add(blog);
                 
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Teacher");
             }
 
-            return View(blog);
+            return RedirectToAction("Index", "Teacher");
         }
 
         // GET: Blog/Edit/5
         public ActionResult Edit(int? id)
         {
+            TempData.Keep("email");
+            TempData.Keep("imagePath");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Blog blog = db.Blog.Find(id);
+            ViewData["detail"] = blog.detail;
             if (blog == null)
             {
                 return HttpNotFound();
@@ -91,16 +96,20 @@ namespace Demo1.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [ValidateInput(false)]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "id,title,createTime,modifyTime,detail,writer,ClickVol")] Blog blog)
         {
+            TempData.Keep("email");
+            TempData.Keep("imagePath");
             if (ModelState.IsValid)
             {
+                blog.modifyTime = DateTime.Now;
                 db.Entry(blog).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Teacher");
             }
-            return View(blog);
+            return RedirectToAction("Index", "Teacher");
         }
 
         // GET: Blog/Delete/5
