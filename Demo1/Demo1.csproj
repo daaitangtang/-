@@ -211,6 +211,7 @@
     <Compile Include="Models\Question.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\StudentGradeModel.cs" />
     <Compile Include="Models\Student_grade.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -245,6 +246,7 @@
     <Content Include="assets\ico\apple-touch-icon-57-precomposed.png" />
     <Content Include="assets\ico\apple-touch-icon-72-precomposed.png" />
     <Content Include="assets\ico\favicon.png" />
+    <Content Include="assets\ico\logo.png" />
     <Content Include="assets\img\backgrounds\1%402x.jpg" />
     <Content Include="assets\img\backgrounds\1.jpg" />
     <Content Include="assets\img\backgrounds\2%402x.jpg" />
@@ -775,6 +777,8 @@
     <Content Include="Scripts\OnlineTest.js" />
     <Content Include="Scripts\SelfTest.js" />
     <Content Include="Scripts\SelfTestType.js" />
+    <Content Include="Scripts\TeaTestAnswer.js" />
+    <Content Include="Scripts\TestAnswer.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
@@ -936,6 +940,9 @@
     <Content Include="vendor\font-awesome\fonts\FontAwesome.otf" />
     <Content Include="vendor\jquery.cookie\component.json" />
     <Content Include="vendor\jquery.cookie\cookie.jquery.json" />
+    <Content Include="Views\Stu\TestAnswer.cshtml" />
+    <Content Include="Views\Teacher\StudentGrade.cshtml" />
+    <Content Include="Views\Teacher\TestAnswer.cshtml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />

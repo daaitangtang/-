@@ -1,5 +1,9 @@
 ﻿<!DOCTYPE html>
 <html>
+<head>
+
+    <link rel="shortcut icon" href="../../assets/ico/logo.png">
+</head>
 <body>
     <!--====================================================
                              MAIN NAVBAR
@@ -29,9 +33,6 @@
                 <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
                     <!-- 全屏按钮-->
                     <li class="nav-item d-flex align-items-center full_scr_exp"><a class="nav-link" href="#"><img src="/../Resource/img/expand.png" onclick="toggleFullScreen(document.body)" class="img-fluid" alt=""></a></li>
-                    <!-- 全局搜索-->
-                    <li class="nav-item d-flex align-items-center"><a id="search" class="nav-link" href="#"><i class="icon-search"></i></a></li>
-
                     <li class="nav-item dropdown">
                         <a id="profile" class="nav-link logout" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="@TempData["imagePath"]" alt="..." class="img-fluid rounded-circle" style="height: 30px; width: 30px;"></a>
                         <ul aria-labelledby="profile" class="dropdown-menu profile">
@@ -41,28 +42,6 @@
                                     <div class="msg-body">
                                         <h3 class="h5">@Session["username"]</h3>
                                         <span>@TempData["email"]</span>
-                                    </div>
-                                </a>
-                                <hr>
-                            </li>
-                            <li>
-                                <a rel="nofollow" href="/Main/Profile" class="dropdown-item">
-                                    <div class="notification">
-                                        <div class="notification-content"><i class="fa fa-user "></i>My Profile</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a rel="nofollow" href="profile.html" class="dropdown-item">
-                                    <div class="notification">
-                                        <div class="notification-content"><i class="fa fa-envelope-o"></i>Inbox</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a rel="nofollow" href="profile.html" class="dropdown-item">
-                                    <div class="notification">
-                                        <div class="notification-content"><i class="fa fa-cog"></i>Setting</div>
                                     </div>
                                 </a>
                                 <hr>

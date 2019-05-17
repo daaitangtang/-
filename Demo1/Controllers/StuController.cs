@@ -47,6 +47,7 @@ namespace Demo1.Controllers
             return RedirectToAction("Index");
         }
 
+        #region 学生试题界面（检测是否进行过测试）
         public ActionResult TestIndex()
         {
             if (Session["userid"] == null)
@@ -57,10 +58,10 @@ namespace Demo1.Controllers
             var studentGrade = db.Student_grade.ToList();
             List<StuTestInfoModel> stuTestInfoModels = new List<StuTestInfoModel>();
             //检查该学生是否做过测试
-            foreach(var testInfo in testInfos)
+            foreach (var testInfo in testInfos)
             {
                 var result = studentGrade.Where(o => o.test_id == testInfo.test_id && o.userid.Equals(Session["userid"])).FirstOrDefault();
-                if(result != null)
+                if (result != null)
                 {
                     stuTestInfoModels.Add(new StuTestInfoModel
                     {
@@ -80,10 +81,12 @@ namespace Demo1.Controllers
 
             return View(stuTestInfoModels);
         }
+        #endregion
 
-        public ActionResult OnlineTest(int? id)
+        #region 学生查看测试结果
+        public ActionResult TestAnswer(int? id)
         {
-            if (id == null) 
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -96,8 +99,70 @@ namespace Demo1.Controllers
                 Questions = needQuestion
             };
             return View(onlineTestModel);
-        }
+        } 
 
+        [HttpPost]
+        public ActionResult TestAnswer(int test_id, int userid)
+        {
+            if(test_id <= 0 || userid <= 0)
+            {
+                return Json(false);
+            }
+            List<OnlineTestResultModel> result = new List<OnlineTestResultModel>();
+            var questions = db.Question.Where(o => o.test_id == test_id).ToList();
+            var stuAnswers = db.Student_test.Where(o => o.user_id == userid).ToList();
+            var stuGrade = db.Student_grade.Where(o => o.userid == userid && o.test_id == test_id).FirstOrDefault();
+            foreach(var question in questions)
+            {
+                var studentAnswer = stuAnswers.Where(o => o.question_id == question.question_id).FirstOrDefault();
+                if(studentAnswer != null)
+                {
+                    OnlineTestResultModel onlineTestResultModel = new OnlineTestResultModel
+                    {
+                        Score = stuGrade.grade,
+                        UserAnswer = studentAnswer.answer,
+                        RealAnswer = question.question_answer,
+                        IsTrue = false
+                    };
+                    if (studentAnswer.answer.Equals(question.question_answer))
+                    {
+                        onlineTestResultModel.IsTrue = true;
+                    }
+                    result.Add(onlineTestResultModel);
+                }
+            }
+            return Json(result);
+        }
+        #endregion
+
+        #region 开始答卷
+
+        public ActionResult OnlineTest(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var needQuestion = db.Question.Where(o => o.test_id == id).ToList();
+            ViewData["QuestionCount"] = needQuestion.Count();
+            TestInfo testInfo = db.TestInfo.Find(id);
+            OnlineTestModel onlineTestModel = new OnlineTestModel
+            {
+                TestInfo = testInfo,
+                Questions = needQuestion
+            };
+            return View(onlineTestModel);
+        } 
+        #endregion
+
+        #region 试卷提交
+        /// <summary>
+        /// 试卷提交
+        /// </summary>
+        /// <param name="test_id"></param>
+        /// <param name="Answer"></param>
+        /// <param name="userid"></param>
+        /// <returns></returns>
         [HttpPost]
         public JsonResult OnlineTest(int test_id, string[] Answer, int userid)
         {
@@ -140,7 +205,7 @@ namespace Demo1.Controllers
                 {
                     userid = userid,
                     test_id = test_id,
-                    grade = sumScore
+                    grade = Math.Ceiling(sumScore)
                 };
                 db.Student_grade.Add(student_Grade);
                 db.SaveChanges();
@@ -148,6 +213,7 @@ namespace Demo1.Controllers
                 return Json(result);
             }
             return Json(false);
-        }
+        } 
+        #endregion
     }
 }

@@ -17,6 +17,7 @@ namespace Demo1.Models
 
     public class OnlineTestResultModel
     {
+        public double Score { get; set; }
         public string UserAnswer { get; set; }
         public string RealAnswer { get; set; }
         public bool IsTrue { get; set; }

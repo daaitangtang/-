@@ -32,10 +32,13 @@ namespace Demo1.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Blog blog = db.Blog.Find(id);
+            blog.ClickVol++;
             if (blog == null)
             {
                 return HttpNotFound();
             }
+            db.Entry(blog).State = EntityState.Modified;
+            db.SaveChanges();
             return View(blog);
         }
 
