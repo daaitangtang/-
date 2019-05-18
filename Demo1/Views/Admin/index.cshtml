@@ -1,6 +1,6 @@
 ﻿
 @{
-    Layout = "~/Views/Shared/Layout.cshtml";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 <style>
     span {
@@ -49,7 +49,7 @@
             <div class="sidebar-header d-flex align-items-center">
                 <div class="avatar"><img src="@TempData["imagePath"]" alt="..." class="img-fluid rounded-circle"></div>
                 <div class="title">
-                    <h1 class="h4">Steena Ben</h1>
+                    <h1 class="h4">@Session["username"]</h1>
                 </div>
             </div>
             <hr>
@@ -67,9 +67,8 @@
             </ul>
         </nav>
 
-        <div class="content-inner" id="mainbody" style="height: 100%; overflow:auto">
-
-            <textarea id="editor" name="editor"></textarea>
+        <div class="content-inner" id="mainbody">
+            <h1>管理员:'@Session["username"]',你好！</h1>
         </div>
     </div>
 </body>

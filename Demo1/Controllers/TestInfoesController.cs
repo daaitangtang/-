@@ -87,9 +87,9 @@ namespace Demo1.Controllers
             {
                 db.Entry(testInfo).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Teacher");
             }
-            return View(testInfo);
+            return RedirectToAction("Index", "Teacher");
         }
 
         // GET: TestInfoes/Delete/5
@@ -104,7 +104,10 @@ namespace Demo1.Controllers
             {
                 return HttpNotFound();
             }
-            return View(testInfo);
+            db.TestInfo.Remove(testInfo);
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
         // POST: TestInfoes/Delete/5

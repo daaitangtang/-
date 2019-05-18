@@ -72,7 +72,7 @@ namespace Demo1.Controllers
                 {
 
                 }
-                return RedirectToAction("Index","Users");
+                return RedirectToAction("Index","Home");
             }
 
             return View();

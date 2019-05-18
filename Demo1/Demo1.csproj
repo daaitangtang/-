@@ -943,6 +943,8 @@
     <Content Include="Views\Stu\TestAnswer.cshtml" />
     <Content Include="Views\Teacher\StudentGrade.cshtml" />
     <Content Include="Views\Teacher\TestAnswer.cshtml" />
+    <Content Include="Views\Shared\TeaLayout.cshtml" />
+    <Content Include="Views\Shared\AdminLayout.cshtml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />
@@ -1314,7 +1316,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\Teacher_Layout.cshtml" />
     <Content Include="Views\Users\Create.cshtml" />
     <Content Include="Views\Users\Delete.cshtml" />
     <Content Include="Views\Users\Details.cshtml" />

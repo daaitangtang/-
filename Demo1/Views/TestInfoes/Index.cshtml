@@ -4,11 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<h2>试卷详情</h2>
 <table class="table">
     <tr>
         <th>
@@ -36,7 +32,9 @@
         </td>
         <td>
             <a href="javascript:void(0);" onclick="loadXMLDoc('/Users/Edit/@item.test_id')">查看试卷</a> |
-            <a href="javascript:void(0);" onclick="loadXMLDoc('/Questions/Create/@item.test_id')">添加试题</a>
+            <a href="javascript:void(0);" onclick="loadXMLDoc('/TestInfoes/Edit/@item.test_id')">修改试卷</a> |
+            <a href="javascript:void(0);" onclick="mcon()?loadXMLDoc('/TestInfoes/Delete/@item.test_id'):''">删除试卷</a> |
+            <a href="javascript:void(0);" onclick="loadXMLDoc('/Questions/Create/@item.test_id')">添加试题</a> 
         </td>
     </tr>
 }

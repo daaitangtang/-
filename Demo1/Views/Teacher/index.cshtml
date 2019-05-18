@@ -1,6 +1,6 @@
 ﻿
 @{
-    Layout = "~/Views/Shared/Layout.cshtml";
+    Layout = "~/Views/Shared/TeaLayout.cshtml";
 }
 <html style="height:100%">
 
@@ -135,6 +135,15 @@
         }
         xmlhttp.open("GET", url, true);
         xmlhttp.send();
+    }
+    function mcon() {
+        var boo = confirm("确认删除吗？");
+        if (boo) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
 

@@ -43,7 +43,7 @@ namespace Demo1.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             ViewData["test_id"] = id;
-            return View();
+            return View("");
         }
 
         // POST: Questions/Create
@@ -57,7 +57,7 @@ namespace Demo1.Controllers
             {
                 db.Question.Add(question);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Teacher");
             }
 
             return View(question);
